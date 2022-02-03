@@ -1,0 +1,16 @@
+version: "3"
+services:
+ rabbitmq:
+    container_name: mq
+    environment:
+        - RABBITMQ_DEFAULT_USER=anil
+        - RABBITMQ_DEFAULT_PASS=anil
+    image: "rabbitmq:management"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - 'rabbitmq_data:/data'
+
+volumes:
+  rabbitmq_data:
