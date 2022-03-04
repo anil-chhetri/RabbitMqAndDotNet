@@ -53,3 +53,11 @@ In this sample project, rabbitmq is installed in docker compose using docker-com
 Exchanges are the message router element of rabbitMQ. Producer doesn't send message directly to queues, they send to exchanges. Queues are bound to one or more exchanges with a binding definations or configurations. Exchanges receive messages from producers and route them to zero or more queues which are bound to them. Exchanges can route a message only to the queues that are bound to them. There are four types of exchanges: _Fanout_, _Direct_, _Topic_, _Headers_. There is at least one exchange in a rabbitmq system. this predefined exchange is called "default exchanges" and its type is "direct". Every newly created queue is implicitly bound to this exchange. <br/>
 ![flow_of_exchanges](Images/exchanges.png)
 
+- **Fanout**: The fanout exchanges types route message to all bound queues indiscriminately. If a routing key is provided, it will simply be ignored. <br>
+  ![fanout](Images/fanout1.png)
+All the consumer will receive the same message from the queues as the exchanges will send same message to all the 3 queues. <br/>
+The fanout exchanges type is useful for facilitaing the _Publish-Subscribe pattern_. When using the fanout exchange type, different queues can be declared to handle messages in different ways. For instance, a message indicating a customer order has been placed might be received by one queue whose consumers fulfill the order, another whose consumer update a read-only history of orders and yet another whose consumers record the order for reporting purposes.
+
+![](Images/Animation.gif)
+
+
