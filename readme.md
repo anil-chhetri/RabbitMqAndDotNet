@@ -56,8 +56,10 @@ Exchanges are the message router element of rabbitMQ. Producer doesn't send mess
 - **Fanout**: The fanout exchanges types route message to all bound queues indiscriminately. If a routing key is provided, it will simply be ignored. <br>
   ![fanout](Images/fanout1.png)
 All the consumer will receive the same message from the queues as the exchanges will send same message to all the 3 queues. <br/>
-The fanout exchanges type is useful for facilitaing the _Publish-Subscribe pattern_. When using the fanout exchange type, different queues can be declared to handle messages in different ways. For instance, a message indicating a customer order has been placed might be received by one queue whose consumers fulfill the order, another whose consumer update a read-only history of orders and yet another whose consumers record the order for reporting purposes.
+The fanout exchanges type is useful for facilitating the _Publish-Subscribe pattern_. When using the fanout exchange type, different queues can be declared to handle messages in different ways. For instance, a message indicating a customer order has been placed might be received by one queue whose consumers fulfill the order, another whose consumer update a read-only history of orders and yet another whose consumers record the order for reporting purposes.
 
-![](Images/Animation.gif)
+- **Direct**: The direct exchange type routes messages with a routing key equal to the routig key declared by the binding queue. In order to send a message to a queue, routing key on the message and the routing key of the bound queue must be exactly the same. <br>
+![](Images/DirectExchange1.png)
+The direct exchanges type is useful when you would like to distinguish messages published to the same exchange using a simple string identifier. 
 
 
