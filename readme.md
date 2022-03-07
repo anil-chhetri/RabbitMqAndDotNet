@@ -62,4 +62,10 @@ The fanout exchanges type is useful for facilitating the _Publish-Subscribe patt
 ![](Images/DirectExchange1.png)
 The direct exchanges type is useful when you would like to distinguish messages published to the same exchange using a simple string identifier. 
 
+- **Topic** The topic exchange type routes message to queues whose routing key matches all, or a protion of a routing key. With topic exchanges, message are published iwth routing key containing a series of words separated by dot(eg. "word1.word2.word3"). _Quesues binding to a topic exchange supply a matching pattern for the server to use when routing messages._ _patterns may contain an asterisk(*) to **match a word in a specific position** of the routing key, or a has(#) to **mactch zero or more words**._
+![](Images/topic.png)
 
+- **Headers** The header exchange Uses message headers in order to route a message to the bound queues. Ignores the routing key value of the message. A message may have many different headers with different values.
+While binding to this type of exchange, every queue specifies which headers a message may contain and whether it requires "all" or "any" of them to be exist in the message.
+  - "x-match" is the special header key whose value can be "all" or "any". It determines the "match all" or "match any" logic for the matching process.
+Sample queue configurations;
